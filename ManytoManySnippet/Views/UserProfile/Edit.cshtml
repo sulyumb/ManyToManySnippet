@@ -1,0 +1,45 @@
+﻿@model ManytoManySnippet.ViewModels.UserProfileViewModel
+
+
+ 
+
+    @using (Html.BeginForm("Edit", "UserProfile", new { id = "formEdit", name = "formEdit" }))
+    {
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>UserProfileViewModel</legend>
+
+            @Html.HiddenFor(x => x.UserProfileID)
+
+            <div>
+                @Html.LabelFor(model => model.UserProfileID)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model.UserProfileID)
+            </div>
+            <div>
+                @Html.LabelFor(model => model.Name)
+            </div>
+            <div>
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+
+            @* Render the check boxes using the Editor Template *@
+            @Html.EditorFor(x => x.Courses)
+
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    }
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

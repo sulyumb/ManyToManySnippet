@@ -1,0 +1,9 @@
+﻿
+@model AssignedCourseData
+@using ManytoManySnippet.Models
+
+<fieldset>
+    @Html.HiddenFor(model => model.CourseID)
+    @Html.CheckBoxFor(model => model.Assigned)
+    @Html.DisplayFor(model => model.CourseDescription)
+</fieldset>

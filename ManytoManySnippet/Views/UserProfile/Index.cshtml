@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ManytoManySnippet.ViewModels.UserProfileViewModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Courses 
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @foreach (var course in item.Courses)
+            {
+                @course.CourseDescription  
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.UserProfileID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.UserProfileID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.UserProfileID })
+          
+        </td>
+    </tr>
+}
+
+</table>
