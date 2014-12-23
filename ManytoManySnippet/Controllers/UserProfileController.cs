@@ -151,7 +151,7 @@ namespace ManytoManySnippet.Controllers
             return View(userProfileViewModel);
         }
 
-        public ActionResult Delete(int id = 0)
+        public ActionResult Delete(int? id)
         {
             var userProfileIQueryable = from u in db.UserProfiles.Include("Courses")
                                         where u.UserProfileID == id
@@ -169,7 +169,7 @@ namespace ManytoManySnippet.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id)
         {
             var userProfile = db.UserProfiles.Include("Courses").Single(u => u.UserProfileID == id);
             DeleteUserProfile(userProfile);
